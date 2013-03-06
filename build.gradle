@@ -5,7 +5,6 @@ apply plugin:'application'
 mainClassName = "Test"
 
 
-sourceCompatibility = 1.6
 version = '1.0'
 jar {
     manifest {
