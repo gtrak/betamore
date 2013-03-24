@@ -2,13 +2,13 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 
 apply plugin:'application'
-mainClassName = "Test"
+mainClassName = "$main"
 
 
 version = '1.0'
 jar {
     manifest {
-        attributes 'Implementation-Title': 'Gradle Quickstart', 'Implementation-Version': version
+        attributes 'Implementation-Title': 'Betamore Java Basics', 'Implementation-Version': version
     }
 }
 
