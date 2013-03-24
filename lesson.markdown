@@ -314,7 +314,7 @@ That means we have to understand the order of things happening in our programs.
 * Raw Recursion looks like a tree
 * Recursion that doesn't spread looks like a line
 * A line is a special case of a tree
-* In these cases, it's possible for the compiler to detect it and not grow a stack. [Tail Recursion](http://c2.com/cgi/wiki?TailCallOptimization)
+* In some cases, it's possible for the compiler to detect that a return value is unused.  In these cases, the stack doesn't grow as normal. [Tail Call Optimization](http://c2.com/cgi/wiki?TailCallOptimization). Code that would crash the program by growing the stack until it runs out of memory would just loop forever.
 
 <pre>
 1 - 2 - 3 - 4
