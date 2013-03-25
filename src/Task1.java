@@ -1,12 +1,12 @@
 // #1. Run this file.
-public class Test{
+public class Task1{
     public static void main(String[] args){
         System.out.println("HELLO WORLD");
     }
 }
  
 /*
- Test is a class that we wrote.  Classes have 'fields' and
+ Task1 is a class that we wrote.  Classes have 'fields' and
  'methods'.  The class declaration has an access modifier (public,
  private, protected or blank) and a class name.  Everything we write
  today will be 'public' for ease of use.  Notice that some code has
