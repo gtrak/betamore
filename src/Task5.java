@@ -8,6 +8,15 @@
  * 2. Enjoy the Object-Oriented approach that java affords :-).
  */
 public class Task5{
+
+    interface IFibonacci {
+        public int next();
+    }
+
+    // static class YourFibonacci implements IFibonacci {
+    //
+    // }
+
     
     public static IFibonacci createFibonacci(){
         // return new YourFibonacci();
@@ -31,10 +40,3 @@ public class Task5{
     }
 }
    
-interface IFibonacci {
-    public int next();
-}
-
-// class YourFibonacci implements IFibonacci {
-//
-// }
