@@ -65,11 +65,11 @@ Template stolen from [GitHub](https://github.com/geraldb/slideshow/blob/master/s
 ## How did I get here?
 * Some excellent coursework
 * Lots of reading
-* Long-term commitment to being a geek
+* Long-term commitment
 * Curiousity to see what's underneath
 * Availability of open-source code and willingness of community members to share knowledge
 
-#Programming Pedigree
+#Programming History
 
 ##Languages I've worked seriously with, in order
 * QBasic (age 8)
@@ -90,7 +90,7 @@ Template stolen from [GitHub](https://github.com/geraldb/slideshow/blob/master/s
 * backend services
 * hadoop query stuff
 
-# Geekery
+# Interests
 
 ## What I enjoy about programming
 * figuring stuff out
@@ -105,6 +105,15 @@ Template stolen from [GitHub](https://github.com/geraldb/slideshow/blob/master/s
 * Mixed-style and mixed-compilation programming 
 * Client-side
 * Larger-scale programming architecture
+
+# This class
+* Trees
+* Recursion
+* Iteration
+* Program Design
+* Java Specifics
+
+* _I think recursion is fundamental to understanding programming.  Lots of programmers I look up to do as well._
 
 # Trees
 
@@ -129,6 +138,8 @@ Breadth-first traversal
 * add nodes
 * sort it
 * move nodes around
+
+* All can be implemented with recursion
 
 # Trees don't have cycles
 
@@ -260,35 +271,35 @@ That means we have to understand the order of things happening in our programs.
 # A simple example while running
 
     public static void println(Object u){
-        19 System.out.21 println(20 u);
+        *19* System.out.*21* println(*20* u);
     }
 
     public static String slurp(URL url) throws IOException {
-        7 InputStream is = 6 url.openStream();
-        10 Reader r = 9 new InputStreamReader(8is);
+        *7* InputStream is = *6* url.openStream();
+        *10* Reader r = *9* new InputStreamReader(*8* is);
         try {
-            12 StringBuilder b = 11 new StringBuilder();
+            *12* StringBuilder b = *11* new StringBuilder();
             //Loops, don't go inside, hard to number :-)
-            13 for(;;){
+            *13* for(;;){
                 int c = r.read();
                 if (c<0) {
                     break;
                 }
                 b.append((char)c);
             }
-            15 return b.14 toString();
+            *15* return b.*14* toString();
         } finally {
-            16 is.close();
-            17 r.close();
+            *16* is.close();
+            *17* r.close();
         }
     }
 
-    public static void main(1 String[] args) throws Exception {
-        4 URL start = 3 new URL(2 "http://en.wikipedia.org/wiki/America");
-        println(18 slurp(5 start));
+    public static void main(*1* String[] args) throws Exception {
+        *4* URL start = *3* new URL(*2* "http://en.wikipedia.org/wiki/America");
+        println(*18* slurp(*5* start));
     }
 
-    0 - The JVM calls our "main" function and passes it the arguments
+    *0* - The JVM calls our "main" function and passes it the arguments
 
 # A more complicated example
 
@@ -305,16 +316,20 @@ That means we have to understand the order of things happening in our programs.
 * Return values
 * Objects? in a bit.
 
+# RECURSION
+* What is recursion?
+
+See _recursion_.
+
 #A word on stacks
 [Wikipedia](http://en.wikipedia.org/wiki/Call_stack)
 
 ![Call Stack](http://www.senocular.com/flash/tutorials/asyncoperations/images/recursion_function.png)
 
-# Back to Recursion
+# Recursion
 * Raw Recursion looks like a tree
-* Recursion that doesn't spread looks like a line
-* A line is a special case of a tree
-* In some cases, it's possible for the compiler to detect that a return value is unused.  In these cases, the stack doesn't grow as normal. [Tail Call Optimization](http://c2.com/cgi/wiki?TailCallOptimization). Code that would crash the program by growing the stack until it runs out of memory will just loop forever instead.
+* Recursion that doesn't spread looks like a sequence
+* A sequence can be thought of as a special case of a tree, where each node only has one child.
 
 <pre>
 1 - 2 - 3 - 4
@@ -331,12 +346,12 @@ That means we have to understand the order of things happening in our programs.
 
 See _recursion_.
 
-
 # Iteration
 * Equivalent to recursion, except you manage the stack yourself (if needed)
-* Out of the box, just like tail recursion.
+* Out of the box, just like a non-stack-consuming tail recursion.
+* Loops
 
- A function that iterates across a passed in list, returning a new list with only the elements that match a passed in condition (predicate). 
+A function that iterates across a passed in list, returning a new list with only the elements that match a passed in condition (predicate). 
 
     public static List filter(IFn<Boolean> pred, List list){
         List out = new ArrayList();
@@ -387,6 +402,13 @@ See _recursion_.
 
 * If there's something you don't know how to do, java's answer is usually to 'use an object'.
 
+* All methods are defined within a class, methods that aren't static rely on a constructed object, and have 'this' bound to that object.
+
+* MyClass.staticMethod();
+
+* new MyClass().objectMethod();
+* MyClass a = new MyClass(); a.objectMethod();
+
 # Before we go any further
 
 Some definitions
@@ -395,7 +417,7 @@ Some definitions
 
 * Bottom-up 'something' - an approach to 'something' that starts at the bottom-most leafs and composes (recursive if you squint)
 
-Learning anything can only be accomplished bottom-up, unless you already have a starting point (another language under your belt, or some other context).
+Learning anything can only be accomplished bottom-up, unless you already have a starting point (a root) (another language under your belt, or some other context).
 
 * Top-down is about foresight and relevance
 
@@ -413,7 +435,7 @@ Sussman, SICP - _We are using here a powerful strategy of synthesis: wishful thi
 
 * We wrote the main function while pretending println and slurp exist.  In order for the program to run, we have to make them exist.
 
-* This is supported in java by the use of stubs that do nothing in place of a real future implementation, this lets us compile and test without the program being fully completed.
+* This style is supported in java by the use of stubs that do nothing in place of a real future implementation, this lets us compile and test without the program being fully completed.
 
 # Bottom-down design
 
@@ -428,22 +450,44 @@ Sussman, SICP - _We are using here a powerful strategy of synthesis: wishful thi
 # Learning a Language
 * Figure out what everything does, focusing on the most import concepts and the most common idioms of the language.
 
-* Focus on semantics and contracts (what things do and imply), not on syntax.  Write things in the simplest and least ambiguous way possible until you have more control over abstraction.
+* Focus on semantics and contracts (what things do and imply), not only on syntax.  Write things in the simplest and least ambiguous way possible until you have more control over abstraction.
 
-* Identify the experts, and read things written by them.  Avoid chatter from people who don't know what they're talking about.
+* Identify the experts, and read things written by them.  Avoid noise.
 
 * paraphrasing my high school band teacher - _Practice doesn't make perfect, practice makes permanent.  Perfect practice makes perfect._
 
-* ^^Don't practice doing things wrong.
+* It's better to do correct things slowly than rush something out.  If you'll ever have to see it again, bad code is a liability.
+
+* Understand what you're doing before you spend a lot of effort solidifying it.
 
 * Read the implementation of things you use.  It's the only way to explain weird behaviors sometimes, and you will gain confidence about the systems you're using and be able to make design judgments yourself, while identifying the tradeoffs at play in code provided by others.  
 
-* Nobody's perfect.
-
-* Figure out how committed you are and apply appropriate effort.
-
 * Check out [what Norvig has to say on the subject.](http://norvig.com/21-days.html)
 
-* If you've done all you can yourself, then and only then ask for help.  I've personally flamed a few newbies myself on ##java irc.  It's great fun.  Sticking to this rule makes you faster at solving your own problems and makes coworkers like you more.
+* If you've done all you can yourself, then and only then ask for help.  Sticking to this rule makes you faster at solving your own problems and makes coworkers like you more.
 
 * Don't worry, today is an exception. Ask for help freely, but struggling a bit will make an answer stick better.
+
+# Compilation
+
+_demo_
+
+* Our project today is built with gradle for convenience.  Gradle does the duties of assembling a classpath, compiling and running your code in one step.
+
+* On linux/OSX - "./gradlew -Pmain=YourClass"
+* On Windows - "gradlew.bat -Pmain=YourClass"
+
+# Resources
+* Princeton CS Java CheatSheet: [http://introcs.cs.princeton.edu/java/11cheatsheet/](http://introcs.cs.princeton.edu/java/11cheatsheet/)
+
+* Just a high-quality treatment of basic CS in Java: [http://introcs.cs.princeton.edu/java/home](http://introcs.cs.princeton.edu/java/home)
+
+## For the bored
+* Effective Java: [http://www.amazon.com/Effective-Java-2nd-Joshua-Bloch/dp/0321356683](http://www.amazon.com/Effective-Java-2nd-Joshua-Bloch/dp/0321356683)
+
+* JCIP: [http://www.amazon.com/Java-Concurrency-Practice-Brian-Goetz/dp/0321349601/ref=sr_1_1?s=books&ie=UTF8&qid=1364146079&sr=1-1&keywords=jcip](http://www.amazon.com/Java-Concurrency-Practice-Brian-Goetz/dp/0321349601/ref=sr_1_1?s=books&ie=UTF8&qid=1364146079&sr=1-1&keywords=jcip)
+
+## For the super-bored
+* The Joy of Clojure: [http://joyofclojure.com/](http://joyofclojure.com/)
+
+# Thanks
