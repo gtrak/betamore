@@ -5,12 +5,30 @@ import org.jsoup.Jsoup;
 
 public class Downloader {
 
+    public static void writeFile(URL path, String content) throws Exception {
+        String relative = path.getFile();
+        String target = "downloaded/" + relative + ".html";
+        File f = new File(target);
+
+        FileOutputStream fs = null;
+        PrintStream ps = null;
+        try {
+            f.getParentFile().mkdirs();
+            fs = new FileOutputStream(f);
+            ps = new PrintStream(fs);
+            ps.print(content);
+        } finally {
+            ps.close();
+            fs.close();
+        }
+    }
+
+
     // Throw Exception so we don't have to worry about checked exceptions
     public static void main(String[] args) throws Exception {
         URL start = new URL("http://en.wikipedia.org/wiki/America");
-        U.println(U.slurp(start));
+        writeFile(start, U.slurp(start));
     }
-
 
     static class Queue {
         // URIs of downloaded files
@@ -18,7 +36,7 @@ public class Downloader {
         public void push(Task t){
         }
     }
-
+    
     static class Task {}
 }
 
