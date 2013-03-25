@@ -474,8 +474,8 @@ _demo_
 
 * Our project today is built with gradle for convenience.  Gradle does the duties of assembling a classpath, compiling and running your code in one step.
 
-* On linux/OSX - "./gradlew -Pmain=YourClass"
-* On Windows - "gradlew.bat -Pmain=YourClass"
+* On linux/OSX - "./gradlew run -Pmain=YourClass"
+* On Windows - "gradlew.bat run -Pmain=YourClass"
 
 # Resources
 * Princeton CS Java CheatSheet: [http://introcs.cs.princeton.edu/java/11cheatsheet/](http://introcs.cs.princeton.edu/java/11cheatsheet/)
