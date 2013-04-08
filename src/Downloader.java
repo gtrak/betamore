@@ -59,22 +59,58 @@ public class Downloader {
     // Throw Exception so we don't have to worry about checked exceptions
     public static void main(String[] args) throws Exception {
         URL start = new URL("http://en.wikipedia.org/wiki/America");
-        String content = U.slurp(start);
-        writeFile(start, content);
-        List<URL> linked = getLinked(start, content);
-        for (URL x : linked){
-            U.println(x);
+
+        Queue q = new Queue();
+
+        int limit = 100;
+        q.push(start);
+
+        for(int c=0; c<limit; c++){
+            URL current = q.next();
+            String content = U.slurp(current);
+            writeFile(current, content);
+            U.println(current);
+
+            List<URL> linked = getLinked(current, content);
+            q.push(linked);
         }
+
+        U.println("DONE!");
     }
 
     static class Queue {
         // URIs of downloaded files
-        java.util.Set<String> downloaded = new HashSet<String>();
-        public void push(Task t){
+        private java.util.Set<URL> downloaded = new HashSet<URL>();
+        private java.util.concurrent.LinkedBlockingQueue<URL> q = new java.util.concurrent.LinkedBlockingQueue<URL>();
+        public void push(URL u){
+            try{
+                q.put(u);
+            } catch (Exception e) {
+                U.wrap(e);
+            }
+        }
+        public void push(List<URL> urls){
+            for (URL u : urls){
+                push(u);
+            }
+        }
+        public URL next(){
+            for(;;){
+                URL u = null;
+                try {
+                    u = q.take();
+                } catch (Exception e) {
+                    U.wrap(e);
+                }
+
+                if (!downloaded.contains(u)) {
+                    downloaded.add(u);
+                    return u;
+                }
+            }
         }
     }
     
-    static class Task {}
 }
 
 /**
