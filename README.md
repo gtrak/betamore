@@ -11,10 +11,7 @@ Files for my Betamore 'Beginning Java' class
 * What's 'this'?
 * Polymorphism
 * Interfaces
-* Basic threading
-* Indeterminacy
-* The Queue
 * File I/O
 * Download a web page
-* Download a ton of web pages (OOM).
+* Find linked pages
 * Download a ton of web pages (workers and queue).
